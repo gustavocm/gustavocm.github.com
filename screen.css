@@ -1,0 +1,42 @@
+body
+{
+	margin: 5em;
+	padding-bottom: 3em;
+	background: white;
+	font-family: Georgia, serif;
+	font-size: 110%;
+	line-height: 150%;
+	margin-left: auto;
+	margin-right: auto;
+	width: 40em;
+	max-width: 90%;	
+	text-align: justify;
+}
+
+h1
+{
+	color: #000;
+	font-size: 1.5em;
+}
+
+a:link, a:visited
+{
+	color: #7e0000;
+    border: none;
+    text-decoration: underline;
+    padding: 0;
+}
+
+a:hover, a:active
+{
+	color: white;
+	background-color: #7e0000;
+	border: none;
+    text-decoration: none;
+}
+
+img
+{
+	width: 100%;
+}
+

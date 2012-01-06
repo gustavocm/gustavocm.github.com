@@ -1,0 +1,60 @@
+<html>
+	<head>
+		<title>Gustavo C. Martins</title>
+		<link rel="stylesheet" type="text/css" href="../screen.css" />
+	</head>
+</html>
+
+<body>
+
+<h1>DE2-70 + Nios II + Camera + Touch-Screen</h1>
+
+<p>
+This project uses a TerasIC DE2-70 development kit and functionally integrates LCD touch screen (TRDB-LTM, 800x480 pixels), camera (TRDB-D5M, 5 Mega-pixels) and Altera's Nios II softcore processor. The main goal of this project is to create a zoom function: you take a picture and, through the touch screen, select the area that the zoom will be applied (as shown in the following picture).
+</p>
+
+<p>
+<center>
+<img src="touch1.png" alt="(Screen Figure)"/> <br/>
+<i>Selecting area to apply zoom</i>
+</center>
+</p>
+
+<p>
+The hardware project is based on a project that can be downloaded <a href="http://translate.google.com/translate?hl=pt-BR&sl=zh-CN&tl=en&u=http://www.cnblogs.com/oomusou/archive/2010/08/14/de2_70_photo_frame.html&rurl=translate.google.com">here</a>. The rectangle drawing is made by a hardware module and the zoom operation is made by software. The software (running on Nios II) has direct access to the SDRAM, that is copied to the LCD framebuffer. The following image contains the system's hardware block diagram representation with all the important blocks (some names are in Portuguese).
+</p>
+
+<p>
+<center>
+<img src="touch2.png" alt="(Diagram)" /> <br/>
+<i>Hardware's block diagram</i>
+</center>
+</p>
+
+<p>
+The SDRAM Controller has four channel (two read channels and two write channels) and the software also controls what channel is enabled. For example, the write channel connected to the retangulo module (which draws the red rectangle) is disabled when the zoom is applied and after that the write channel connected to the AVALON is enabled.
+</p>
+
+<p>
+The known problems in this project are: (1) After capturing the image (when CMOS_CAPTURE_STOP is called) it is impossible to capture images again and you have reset the system; (2) the zoom can be applied only to small areas. That's because the area is moved to Nios's RAM, which is a small memory; (3) In the second time that the zoom is applied (without using CMOS_CAPTURE_STOP), a problem in image synchronization appears (well, there is no synchronization implemented).
+</p>
+
+<p>
+This is a simple project, but it can be very helpful, since it's troublesome to deal with the camera/LCD/Nios integration at some points. For more information check this project's <a href="http://dl.dropbox.com/u/3321979/Blog/2011-02/Project%3A%20Touch%20Screen%20%2B%20Camera%20%2B%20Nios%20II%20on%20DE2-70/RelatorioFinal.pdf">documentation</a> (in Portuguese).
+</p>
+
+<p>
+<b>Links</b> <br/>
+1. <a href="http://dl.dropbox.com/u/3321979/Blog/2011-02/Project%3A%20Touch%20Screen%20%2B%20Camera%20%2B%20Nios%20II%20on%20DE2-70/DE2_70_D5M_LTM_NIOS_capture_v5.rar">Project</a> (Hardware + Software) - Compiled with Quartus 9.0 and Nios II Embedded Design Suite <br/>
+2. <a href="http://dl.dropbox.com/u/3321979/Blog/2011-02/Project%3A%20Touch%20Screen%20%2B%20Camera%20%2B%20Nios%20II%20on%20DE2-70/RelatorioFinal.pdf">Documentation</a> (in Portuguese) <br/>
+3. Chinese blog with nice projects. <a href="http://www.cnblogs.com/oomusou">http://www.cnblogs.com/oomusou</a> <br/>
+4. TRDB-D5M User Guide. <a href="http://www.terasic.com.tw/attachment/archive/282/TRDB_D5M_UserGuide.pdf">http://www.terasic.com.tw/attachment/archive/282/TRDB_D5M_UserGuide.pdf</a> <br/>
+5. TRDB-LTM User Manual. <a href="http://www.woorimtni.co.kr/terasic/fpga08/TRDB_LTM_UserGuide_v1.22.pdf">http://www.woorimtni.co.kr/terasic/fpga08/TRDB_LTM_UserGuide_v1.22.pdf</a>
+</p>
+
+
+</p>
+
+</body>
+
+</html>
