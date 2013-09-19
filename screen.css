@@ -21,7 +21,7 @@ h1
 
 a:link, a:visited
 {
-	color: #7e0000;
+	color: #17295E;
     border: none;
     text-decoration: underline;
     padding: 0;
@@ -30,7 +30,7 @@ a:link, a:visited
 a:hover, a:active
 {
 	color: white;
-	background-color: #7e0000;
+	background-color: #17295E;
 	border: none;
     text-decoration: none;
 }
